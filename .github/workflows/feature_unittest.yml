@@ -1,0 +1,23 @@
+# Cubix block1 optional homework
+# Miskovits Dániel
+
+# run only on feature branches
+# run unit tests
+
+name: Feature branch unit tests
+
+on:
+  push:
+    branches:
+    - 'feature/**'
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Build with Maven
+      run: ./mvnw clean test
+      
