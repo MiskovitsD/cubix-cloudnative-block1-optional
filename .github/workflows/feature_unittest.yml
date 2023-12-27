@@ -18,6 +18,6 @@ jobs:
       contents: read
       packages: write
     steps:
-    - name: Build with Maven
+    - name: Run unit tests
       run: ./mvnw clean test
       
