@@ -1,0 +1,19 @@
+# Cubix block1 optional homework
+# Miskovits Dániel
+
+# run only on pull requests
+# run integration tests
+
+name: Pull request integration tests
+
+on: [pull_request]
+
+jobs:
+  integrationtest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Run integration tests
+      run: ./mvnw clean integration-test
