@@ -1,0 +1,36 @@
+# Cubix block1 optional homework
+# Miskovits Dániel
+
+# run only on pull requests
+# run integration tests
+
+name: Pull request integration tests
+
+on:
+# --> For testing purposes
+#  push:
+#    branches-ignore: [main]
+# <--
+  pull_request:
+    branches:
+      - main
+      - 'ci/**'
+    types: [opened, reopened]
+
+jobs:
+  integrationtest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        cache: 'maven'
+    - name: Run integration tests
+      run: ./mvnw clean integration-test
