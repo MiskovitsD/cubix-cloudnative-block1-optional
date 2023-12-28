@@ -7,6 +7,8 @@
 name: Pull request integration tests
 
 on:
+  push:
+    branches-ignore: [main]
   pull_request:
     branches:
       - main
