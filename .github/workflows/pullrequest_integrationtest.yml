@@ -6,7 +6,13 @@
 
 name: Pull request integration tests
 
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - main
+      - 'ci/**'
+    types:
+      - created
 
 jobs:
   integrationtest:
